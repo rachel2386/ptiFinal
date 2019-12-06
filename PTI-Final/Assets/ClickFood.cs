@@ -12,7 +12,12 @@ public class ClickFood : MonoBehaviour
     public GameObject Course2;
     public GameObject Course1;
 
+    public CanvasGroup like;
+    private bool DoLike;
+    
     private List<bool> toogle = new List<bool>();
+
+    public GameObject chat;
     
     // Start is called before the first frame update
     void Start()
@@ -33,6 +38,28 @@ public class ClickFood : MonoBehaviour
         {
             Course2.SetActive(true);
             Course1.SetActive(false);
+        }
+        
+        if (Input.GetKeyDown("9"))
+                {
+                    chat.transform.position += new Vector3(0, 68, 0);
+                }
+
+        if (Input.GetKeyDown("space"))
+        {
+            like.alpha = 1;
+            DoLike = true;
+        }
+
+        if (DoLike)
+        {
+            like.alpha -= Time.deltaTime;
+
+            if (like.alpha < 0)
+            {
+                DoLike = false;
+            }
+            
         }
         
         //using mouse
